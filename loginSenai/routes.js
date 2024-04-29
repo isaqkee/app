@@ -9,12 +9,14 @@ export default function Routes() {
         <Stack.Navigator>
             <Stack.Screen
                 name="index"
-                component={Bem_Vindo}                
+                component={Bem_Vindo}           
+                options={{ headerShown: false }}      
                  />
 
             <Stack.Screen
                 name="entrada"
-                component={Acesso}                 
+                component={Acesso}   
+                options={{ headerShown: false }}               
                 />
         </Stack.Navigator>
         )
