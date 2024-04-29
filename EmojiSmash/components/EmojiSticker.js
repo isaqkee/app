@@ -3,13 +3,14 @@ import { Gesture, GestureDetector } from 'react-native-gesture-handler';
 import Animated, { useAnimatedStyle, useSharedValue, withSpring } from 'react-native-reanimated';
 
 export default function EmojiSticker({ imageSize, stickerSource }) {
-
   const scaleImage = useSharedValue(imageSize);
   const doubleTap = Gesture.Tap()
     .numberOfTaps(2)
     .onStart(() => {
-      if (scaleImage.value !== imageSize * 2) {
-        scaleImage.value = scaleImage.value * 2;
+      if (scaleImage.value !== imageSize) {
+        scaleImage.value = imageSize;
+      } else {
+        scaleImage.value = imageSize * 2;
       }
     });
   const imageStyle = useAnimatedStyle(() => {
@@ -43,15 +44,15 @@ export default function EmojiSticker({ imageSize, stickerSource }) {
 
   return (
     <GestureDetector gesture={drag}>
-        <Animated.View style={[containerStyle, { top: -350 }]}>
-            <GestureDetector gesture={doubleTap}>
-                <Animated.Image
-                    source={stickerSource}
-                    resizeMode="contain"
-                    style={[imageStyle, { width: imageSize, height: imageSize }]}
-                />
-            </GestureDetector>
-        </Animated.View>
+      <Animated.View style={[containerStyle, { top: -350 }]}>
+        <GestureDetector gesture={doubleTap}>
+          <Animated.Image
+            source={stickerSource}
+            resizeMode="contain"
+            style={[imageStyle, { width: imageSize, height: imageSize }]}
+          />
+        </GestureDetector>
+      </Animated.View>
     </GestureDetector>
-);
+  );
 }
