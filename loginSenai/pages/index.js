@@ -20,7 +20,7 @@ export default function Bem_Vindo() {
                     resizeMode="contain"
                 />
             </View>
-            <View style={styles.containerForm}>
+            <Animatable.View delay={600} animation='fadeInUp' style={styles.containerForm}>
                 <Text style={styles.title}>
                     Monitore e organize seus recursos didáticos de qualquer lugar!
                 </Text>
@@ -34,7 +34,7 @@ export default function Bem_Vindo() {
                         Acessar
                     </Text>
                 </TouchableOpacity>
-            </View>
+            </Animatable.View>
         </View>
     )
 }
