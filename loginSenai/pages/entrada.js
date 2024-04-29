@@ -1,46 +1,46 @@
+import React from 'react';
 import {
-    View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView,
+    View,
+    Text,
+    StyleSheet,
+    TextInput,
+    TouchableOpacity,
+    KeyboardAvoidingView,
     Keyboard,
     TouchableWithoutFeedback
 } from 'react-native';
-import React from 'react';
 import * as Animatable from 'react-native-animatable';
+import { Ionicons } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 export default function Acesso() {
+    const navigation = useNavigation();
+
     return (
         <KeyboardAvoidingView style={{ flex: 1 }}>
             <TouchableWithoutFeedback onPress={() => Keyboard.dismiss()}>
                 <View style={styles.container}>
+                    <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
+                        <Ionicons name="arrow-back" size={24} color="white" />
+                    </TouchableOpacity>
                     <Animatable.View animation="fadeInLeft" delay={500} style={styles.containerHeader}>
                         <Text style={styles.message}>Bem-vindo(a)</Text>
                     </Animatable.View>
                     <Animatable.View animation="fadeInUp" style={styles.containerForm}>
-                        <Text style={styles.title}>
-                            E-mail
-                        </Text>
-                        <TextInput
-                            placeholder='Digite um email...'
-                            style={styles.input}
-                        />
-                        <TextInput
-                            placeholder='Sua senha'
-                            style={styles.input}
-                        />
+                        <Text style={styles.title}>E-mail</Text>
+                        <TextInput placeholder='Digite um email...' style={styles.input} />
+                        <TextInput placeholder='Sua senha' style={styles.input} />
                         <TouchableOpacity style={styles.button}>
-                            <Text style={styles.buttonText}>
-                                Acessar
-                            </Text>
+                            <Text style={styles.buttonText}>Acessar</Text>
                         </TouchableOpacity>
                         <TouchableOpacity style={styles.buttonRegister}>
-                            <Text style={styles.registerText}>
-                                Não possui uma conta? Cadastre-se
-                            </Text>
+                            <Text style={styles.registerText}>Não possui uma conta? Cadastre-se</Text>
                         </TouchableOpacity>
                     </Animatable.View>
                 </View>
             </TouchableWithoutFeedback>
         </KeyboardAvoidingView>
-    )
+    );
 }
 
 const styles = StyleSheet.create({
@@ -96,5 +96,12 @@ const styles = StyleSheet.create({
     },
     registerText: {
         color: '#a1a1a1'
+    },
+    backButton: {
+        position: 'absolute',
+        top: 20,
+        left: 20,
+        zIndex: 9999,
+        padding: 10
     }
-})
+});

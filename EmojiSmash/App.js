@@ -71,14 +71,14 @@ export default function App() {
       }
     } else {
       try {
-        const dataUrl = await domtoimage.toJpeg(imageRef.current, {
+        const dataUrl = await domtoimage.toPng(imageRef.current, {
           quality: 0.95,
           width: 320,
           height: 440,
         });
   
         let link = document.createElement('a');
-        link.download = 'sticker-smash.jpeg';
+        link.download = 'sticker-smash.Png';
         link.href = dataUrl;
         link.click();
       } catch (erro) {
